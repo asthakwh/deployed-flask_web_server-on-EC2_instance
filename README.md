@@ -33,7 +33,9 @@ WantedBy=multi-user.target
 ##############################
 
 sudo systemctl daemon-reload
-sudo systemctl restart hello
+sudo systemctl start hello
+sudo systemctl enable hello
+sudo systemctl status hello
 curl localhost:8000
 
 sudo apt install nginx
@@ -56,3 +58,5 @@ location / {
 
 sudo systemctl restart nginx
 check in browser with IP
+
+Bonus tip: Check that venv is available under hello or your main folder
