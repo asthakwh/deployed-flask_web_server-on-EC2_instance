@@ -1,8 +1,13 @@
 # deployed-flask_web_server-on-EC2_instance
 python3 -v
+
 mkdir hello
+
 cd hello
+
 sudo nano app.py
+
+
 #######################
 from flask import Flask
 app = Flask(__name__)
@@ -14,9 +19,13 @@ if __name__ == "__main__":
 ##########################
 
 source venv/bin/activate
-pip install flask 
+
+pip install flask
+
 pip install gunicorn
+
 gunicorn -b 0.0.0.0:8000 app:app
+
 now create a file with "sudo nano /etc/systemd/system/hello.service"
 ############################
 [Unit]
@@ -33,15 +42,23 @@ WantedBy=multi-user.target
 ##############################
 
 sudo systemctl daemon-reload
+
 sudo systemctl start hello
+
 sudo systemctl enable hello
+
 sudo systemctl status hello
+
 curl localhost:8000
 
 sudo apt install nginx
+
 sudo systemctl start nginx
+
 sudo systemctl enable nginx
+
 sudo systemctl status nginx
+
 sudo nano /etc/nginx/sites-available/default 
 ###################################
 ###also enter this on nginx file####
@@ -56,7 +73,9 @@ location / {
 	}
 ###################################
 
+
 sudo systemctl restart nginx
+
 check in browser with IP
 
 Bonus tip: Check that venv is available under hello or your main folder
